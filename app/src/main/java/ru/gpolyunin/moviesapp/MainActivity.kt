@@ -3,6 +3,7 @@ package ru.gpolyunin.moviesapp
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.rememberNavController
 import dagger.hilt.android.AndroidEntryPoint
 import ru.gpolyunin.moviesapp.navigation.setupNavHost
@@ -15,7 +16,8 @@ class MainActivity : ComponentActivity() {
         setContent {
             MoviesAppTheme {
                 val navController = rememberNavController()
-                setupNavHost(navController = navController)
+                val viewModel = hiltViewModel<MainViewModel>()
+                setupNavHost(navController = navController, viewModel = viewModel)
             }
         }
     }
